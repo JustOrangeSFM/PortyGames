@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortyGames</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #000000;
+            overflow-x: hidden;
+            position: relative;
+            color: #ffffff;
+        }
+
+        /* Ненавязчивый зелёный градиент внизу */
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(transparent 0%, rgba(0,255,65,0.15) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Тонкие линии сетки */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0,255,65,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,255,65,0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Плавающие частицы */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(0,255,65,0.4);
+            border-radius: 50%;
+            animation: float 25s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .logo-image {
+            width: clamp(120px, 20vw, 200px);
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(0,255,65,0.6));
+            margin-bottom: 10px;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .logo-image:hover {
+            filter: drop-shadow(0 0 30px rgba(0,255,65,0.9));
+            transform: scale(1.05);
+        }
+
+        .title {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            font-size: clamp(2.2rem, 7vw, 5rem);
+            background: linear-gradient(45deg, #00ff41 0%, #00ff41 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 255, 65, 0.6);
+            letter-spacing: 3px;
+            animation: titlePulse 4s ease-in-out infinite alternate;
+            line-height: 1;
+        }
+
+        @keyframes titlePulse {
+            0% { filter: drop-shadow(0 0 15px rgba(0,255,65,0.4)); }
+            100% { filter: drop-shadow(0 0 30px rgba(0,255,65,0.7)); }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+            max-width: 90%;
+            z-index: 10;
+            padding: 20px;
+        }
+
+        .tutorial-section {
+            background: rgba(20, 20, 40, 0.7);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+        }
+
+        .tutorial-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.9), inset 0 0 0 2px rgba(255,255,255,0.2);
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .social-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 20px 32px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(30px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            line-height: 1.4;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s;
+        }
+
+        .social-btn:hover::before {
+            left: 100%;
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 25px rgba(0, 255, 65, 0.4);
+        }
+
+        .social-btn i {
+            font-size: 1.5rem;
+            width: 40px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .content { gap: 40px; }
+            .tutorial-section { padding: 30px 20px; }
+            .tutorial-title { font-size: 1.9rem; }
+            .social-btn { padding: 18px 28px; font-size: 1.05rem; gap: 15px; }
+            .logo-container { margin-bottom: 40px; }
+            .title { letter-spacing: 2px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Плавающие частицы -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Лого + Текст -->
+    <div class="logo-container">
+        <!-- ЗАМЕНИ 'your-logo.png' на путь к твоему логотипу -->
+        <img src="your-logo.png" alt="PortyGames Logo" class="logo-image">
+        <h1 class="title">PortyGames</h1>
+    </div>
+    
+    <div class="content">
+        <!-- Tutorial секция -->
+        <section class="tutorial-section">
+            <h2 class="tutorial-title">Tutorial How to Download</h2>
+            <div class="video-container">
+                <!-- ЗАМЕНИТЕ 'your-tutorial-video.mp4' на путь к вашему MP4 -->
+                <video controls poster="https://via.placeholder.com/640x360/000/00ff41?text=Tutorial">
+                    <source src="your-tutorial-video.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+            </div>
+        </section>
+
+        <!-- Социальные кнопки -->
+        <div class="social-container">
+            <a href="https://go.linkify.ru/2GhU" target="_blank" class="social-btn">
+                <i class="fab fa-telegram-plane"></i>
+                Telegram Channel Orange SFM
+            </a>
+            
+            <a href="https://go.linkify.ru/2GhR" target="_blank" class="social-btn">
+                <i class="fas fa-download"></i>
+                Download Port
+            </a>
+            
+            <a href="https://go.linkify.ru/2GjR" target="_blank" class="social-btn">
+                <i class="fab fa-telegram-plane"></i>
+                Telegram Channel PortyGames
+            </a>
+        </div>
+    </div>
+</body>
+</html>
