@@ -158,7 +158,7 @@
             position: relative;
             width: 100%;
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0 auto 40px auto;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 25px 70px rgba(0,0,0,0.9), inset 0 0 0 2px rgba(255,255,255,0.2);
@@ -228,6 +228,51 @@
             flex-shrink: 0;
         }
 
+        /* Исправленные стили для текста инструкции */
+        .tutorial-text {
+            text-align: left;
+            width: 100%;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tutorial-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #00ff41;
+            text-align: left;
+        }
+
+        .tutorial-list {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ffffff;
+            text-align: left;
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        .tutorial-list li {
+            margin-bottom: 12px;
+        }
+
+        .tutorial-note {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #00ff41;
+            text-align: left;
+            padding: 15px 20px;
+            background: rgba(0, 255, 65, 0.1);
+            border-left: 4px solid #00ff41;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+
         @media (max-width: 768px) {
             .content { gap: 40px; }
             .tutorial-section { padding: 30px 20px; }
@@ -235,6 +280,12 @@
             .social-btn { padding: 18px 28px; font-size: 1.05rem; gap: 15px; }
             .logo-container { margin-bottom: 40px; }
             .title { letter-spacing: 2px; }
+            .tutorial-subtitle {
+                font-size: 1.3rem;
+            }
+            .tutorial-list, .tutorial-note {
+                font-size: 1rem;
+            }
         }
     </style>
     <!-- ВСТАВЛЕННЫЙ КОД MYBID (ПОПАНДЕР) -->
@@ -270,12 +321,18 @@
                 </video>
             </div>
 
-            <h2 class="tutorial-title">If the game does not install:
-1 check that the device has more than 2-3 GB of free memory
-2 there may be a conflict with different versions for one reason or another. Just uninstall the old version and install the new one
-3 your device does not support this game. Just buy a new phone.
-The game does not support 32bit devices due to limitations of Unreal Engine 5</h2>
-            
+            <div class="tutorial-text">
+                <h3 class="tutorial-subtitle">⚠️ If the game does not install:</h3>
+                <ol class="tutorial-list">
+                    <li><strong>Check storage:</strong> Device must have more than 2-3 GB of free memory</li>
+                    <li><strong>Version conflict:</strong> Uninstall the old version and install the new one</li>
+                    <li><strong>Device compatibility:</strong> Your device may not support this game</li>
+                </ol>
+                <p class="tutorial-note">
+                    <i class="fas fa-microchip" style="margin-right: 8px;"></i>
+                    The game does not support 32-bit devices due to limitations of Unreal Engine 5
+                </p>
+            </div>
         </section>
 
         <!-- Социальные кнопки -->
@@ -290,7 +347,6 @@ The game does not support 32bit devices due to limitations of Unreal Engine 5</h
                 Download Port
             </a>
 
-
             <a href="https://go.linkify.ru/2GqI" target="_blank" class="social-btn">
                 <i class="fas fa-download"></i>
                 Download Port Link 2
@@ -304,7 +360,3 @@ The game does not support 32bit devices due to limitations of Unreal Engine 5</h
     </div>
 </body>
 </html>
-
-
-
-
