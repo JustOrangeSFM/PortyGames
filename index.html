@@ -57,44 +57,6 @@
             .requirements-block h4 { font-size: 1.1rem; }
         }
     </style>
-    
-    <!-- POPUNDER КОД ADSTERRA -->
-    <script src="https://pl29153332.profitablecpmratenetwork.com/c3/8a/eb/c38aeb3b25949c911571afeee08e65b0.js"></script>
-    
-    <!-- СКРИПТ ДЛЯ АКТИВАЦИИ POPUNDER ПРИ КЛИКЕ -->
-    <script>
-        // Функция для показа popunder
-        function showPopunder() {
-            // Проверяем, загрузился ли скрипт Adsterra
-            if (typeof Adsterra !== 'undefined' && Adsterra.popunder) {
-                Adsterra.popunder.show();
-                console.log('Popunder показан через Adsterra');
-            } else {
-                // Альтернативный метод: открываем рекламную ссылку в новой вкладке
-                console.log('Пробуем альтернативный метод...');
-                // Здесь может быть прямая ссылка на рекламу из вашего кабинета
-            }
-        }
-        
-        // Ждём полной загрузки страницы
-        document.addEventListener('DOMContentLoaded', function() {
-            // Вариант 1: Показываем popunder через 3 секунды после загрузки
-            setTimeout(function() {
-                showPopunder();
-            }, 3000);
-            
-            // Вариант 2: Показываем при клике на любую кнопку скачивания
-            var downloadBtns = document.querySelectorAll('.social-btn');
-            downloadBtns.forEach(function(btn) {
-                btn.addEventListener('click', function(e) {
-                    // Небольшая задержка, чтобы не блокировать основной клик
-                    setTimeout(function() {
-                        showPopunder();
-                    }, 100);
-                });
-            });
-        });
-    </script>
 </head>
 <body>
     <!-- Плавающие частицы -->
@@ -185,5 +147,17 @@
             </a>
         </div>
     </div>
+
+    <script>
+  atOptions = {
+    'key' : 'cdd68913f0abf574858368480cc3a60b',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/cdd68913f0abf574858368480cc3a60b/invoke.js"></script>
+
 </body>
 </html>
